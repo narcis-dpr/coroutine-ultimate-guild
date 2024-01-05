@@ -1,12 +1,13 @@
 package com.coroutines.basics
 
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 fun main() {
-    standardFunWithCoroutine()
+    mainDispatcherFun()
 }
 
 fun coroutineBuilder() {
@@ -88,4 +89,16 @@ fun standardFunWithCoroutine() {
         }
     }
     Thread.sleep(5000)
+}
+fun mainDispatcherFun() {
+    GlobalScope.launch {
+        val bigThreadName = Thread.currentThread().name
+        println("Im Job 1 thread $bigThreadName")
+        delay(200)
+        GlobalScope.launch(Dispatchers.Main) {
+            val uiThreadName = Thread.currentThread().name
+            println("Im Job 2 in thread $uiThreadName")
+        }
+    }
+    Thread.sleep(1000)
 }
