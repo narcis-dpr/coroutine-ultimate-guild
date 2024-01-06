@@ -1,5 +1,7 @@
 package com.coroutines.basics
 
+import com.coroutines.basics.api.executeBackground
+import com.coroutines.basics.api.executeMain
 import com.coroutines.basics.api.getValue
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -13,14 +15,16 @@ fun main() {
     }
     println("main end")
 
-    GlobalScope.launch {
+    executeBackground {
         val user = getUserStandard("101")
-        println(user)
+        executeMain {  println(user) }
     }
     Thread.sleep(1500)
 
-    GlobalScope.launch {
+    executeBackground {
         val user = getValue { getUserStandard("101") }
+
+        executeMain { println(user) }
     }
 }
 
