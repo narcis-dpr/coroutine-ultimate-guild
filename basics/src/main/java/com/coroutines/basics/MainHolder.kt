@@ -1,12 +1,13 @@
 package com.coroutines.basics
 
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 fun main() {
-    jobHierarchy()
+    mainDispatcherFun()
 }
 
 fun coroutineBuilder() {
@@ -64,4 +65,40 @@ fun jobHierarchy() {
         }
         Thread.sleep(1000)
     }
+}
+
+fun standardFunWithCoroutine() {
+    var isDoorOpen = false
+    println("Unlocking the door ... please wait.\n")
+    GlobalScope.launch {
+        delay(3000)
+
+        isDoorOpen = true
+    }
+
+    GlobalScope.launch {
+        repeat(4) {
+            println("Trying to open the door... \n")
+            delay(800)
+
+            if (isDoorOpen) {
+                println("Opened the door! \n")
+            } else {
+                println("The door is still locked \n")
+            }
+        }
+    }
+    Thread.sleep(5000)
+}
+fun mainDispatcherFun() {
+    GlobalScope.launch {
+        val bigThreadName = Thread.currentThread().name
+        println("Im Job 1 thread $bigThreadName")
+        delay(200)
+        GlobalScope.launch(Dispatchers.Main) {
+            val uiThreadName = Thread.currentThread().name
+            println("Im Job 2 in thread $uiThreadName")
+        }
+    }
+    Thread.sleep(1000)
 }
