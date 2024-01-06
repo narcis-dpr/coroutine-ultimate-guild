@@ -3,10 +3,13 @@ package com.coroutines.basics
 import com.coroutines.basics.api.executeBackground
 import com.coroutines.basics.api.executeMain
 import com.coroutines.basics.api.getValue
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.concurrent.thread
+
 
 fun main() {
     getUserFromNetworkCallback("202") { user, error ->
@@ -14,10 +17,12 @@ fun main() {
         error?.printStackTrace()
     }
     println("main end")
-
+    /**
+     * suspending
+     */
     executeBackground {
         val user = getUserStandard("101")
-        executeMain {  println(user) }
+        executeMain { println(user) }
     }
     Thread.sleep(1500)
 
@@ -25,6 +30,14 @@ fun main() {
         val user = getValue { getUserStandard("101") }
 
         executeMain { println(user) }
+    }
+    /**\
+     * with context
+     */
+
+    GlobalScope.launch(Dispatchers.Main) {
+        val user = getUserSuspended("101")
+        println(user)
     }
 }
 
@@ -50,9 +63,9 @@ fun getUserFromNetworkCallback(
     println("end")
 }
 
-suspend fun getUserSuspended(userId: String): User {
+suspend fun getUserSuspended(userId: String): User = withContext(Dispatchers.Default) {
     delay(1000)
-    return User(userId, "Filip")
+    User(userId, "Filip")
 }
 
 data class User(
