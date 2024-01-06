@@ -3,8 +3,9 @@ package com.coroutines.basics
 import kotlin.concurrent.thread
 
 fun main() {
-    getUserFromNetworkCallback("202") { user ->
-        println(user)
+    getUserFromNetworkCallback("202") { user, error ->
+        user?.run(::println)
+        error?.printStackTrace()
     }
     println("main end")
 }
@@ -16,13 +17,17 @@ fun getUserStandard(userId: String): User {
 
 fun getUserFromNetworkCallback(
     userId: String,
-    onUserReady: (User) -> Unit,
+    onUserResponse: (User?, Throwable?) -> Unit,
 ) {
     thread {
-        Thread.sleep(1000)
+        try {
+            Thread.sleep(1000)
 
-        val user = User(userId, "Filip")
-        onUserReady(user)
+            val user = User(userId, "Filip")
+            onUserResponse(user, null)
+        } catch (error: Throwable) {
+            onUserResponse(null, error)
+        }
     }
     println("end")
 }
