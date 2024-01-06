@@ -1,5 +1,8 @@
 package com.coroutines.basics
 
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.concurrent.thread
 
 fun main() {
@@ -8,6 +11,12 @@ fun main() {
         error?.printStackTrace()
     }
     println("main end")
+
+    GlobalScope.launch {
+        val user = getUserStandard("101")
+        println(user)
+    }
+    Thread.sleep(1500)
 }
 
 fun getUserStandard(userId: String): User {
@@ -32,6 +41,10 @@ fun getUserFromNetworkCallback(
     println("end")
 }
 
+suspend fun getUserSuspended(userId: String): User {
+    delay(1000)
+    return User(userId, "Filip")
+}
 data class User(
     val id: String,
     val name: String,
