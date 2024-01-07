@@ -6,6 +6,14 @@ import kotlinx.coroutines.launch
 
 fun main() {
     val userId = 992
+
+    /**
+     *
+     * callback pattern
+     getUserByIdFromNetwork(userId) { user ->
+     println(user)
+     }
+     */
     GlobalScope.launch {
         val userData = getUserByIdFromNetwork(userId)
         println(userData.await())
