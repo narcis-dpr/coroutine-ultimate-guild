@@ -1,4 +1,4 @@
-package com.coroutines.basics
+package com.coroutines.basics.suspensionConcept
 
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers

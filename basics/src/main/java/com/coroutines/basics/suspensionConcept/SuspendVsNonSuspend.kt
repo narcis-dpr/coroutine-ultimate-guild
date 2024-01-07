@@ -1,4 +1,4 @@
-package com.coroutines.basics
+package com.coroutines.basics.suspensionConcept
 
 import com.coroutines.basics.api.executeBackground
 import com.coroutines.basics.api.executeMain

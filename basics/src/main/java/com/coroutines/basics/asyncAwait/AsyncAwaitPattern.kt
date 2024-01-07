@@ -1,4 +1,4 @@
-package com.coroutines.basics
+package com.coroutines.basics.asyncAwait
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
