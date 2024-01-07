@@ -1,15 +1,15 @@
 package com.coroutines.basics
 
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import java.io.File
 
 fun main() {
     val userId = 992
-
+    val scope = CustomScope()
     /**
      *
      * callback pattern
@@ -26,10 +26,10 @@ fun main() {
      }
      Thread.sleep(5000)
      */
-    val launch = GlobalScope.launch {
+    scope.launch {
         println("Finding user")
-        val userDeferred = getUserByIdFromNetwork(userId) // deferred number one
-        val usersFromFileDeferred = readUsersFromFile("basics/users.txt") // deferred number two
+        val userDeferred = getUserByIdFromNetwork(userId, scope) // deferred number one
+        val usersFromFileDeferred = readUsersFromFile("basics/users.txt", scope) // deferred number two
 
         val userStoredInFile = checkUserExists(
             userDeferred.await(),
@@ -40,8 +40,7 @@ fun main() {
             println("Found user in file")
         }
     }
-    Thread.sleep(50)
-    launch.cancel()
+    scope.onStop()
 }
 
 private fun getUserByIdFromNetworkThread(userId: Int, onUserReady: (AsyncUser) -> Unit) {
@@ -49,14 +48,17 @@ private fun getUserByIdFromNetworkThread(userId: Int, onUserReady: (AsyncUser) -
     onUserReady(AsyncUser(userId, "Filip", "Babic"))
 }
 
-private fun getUserByIdFromNetwork(userId: Int) =
-    GlobalScope.async {
+private fun getUserByIdFromNetwork(userId: Int, scope: CoroutineScope) =
+    scope.async {
+        if (!isActive) {
+            return@async AsyncUser(0, "", "")
+        }
         println("Retrieving user from network")
-        Thread.sleep(3000)
+        delay(3000)
         AsyncUser(userId, "Filip", "Babic")
     }
 
-private fun readUsersFromFile(filePath: String) = GlobalScope.async {
+private fun readUsersFromFile(filePath: String, scope: CoroutineScope) = scope.async {
     println("Reading the file of users")
     delay(1000)
 
