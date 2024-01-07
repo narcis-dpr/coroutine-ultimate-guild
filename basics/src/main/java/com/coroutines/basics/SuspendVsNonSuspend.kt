@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.concurrent.thread
 
-
 fun main() {
     getUserFromNetworkCallback("202") { user, error ->
         user?.run(::println)
@@ -41,20 +40,20 @@ fun main() {
     }
 }
 
-fun getUserStandard(userId: String): User {
+private fun getUserStandard(userId: String): SuspendUser {
     Thread.sleep(1000)
-    return User(userId, "Filip")
+    return SuspendUser(userId, "Filip")
 }
 
-fun getUserFromNetworkCallback(
+private fun getUserFromNetworkCallback(
     userId: String,
-    onUserResponse: (User?, Throwable?) -> Unit,
+    onUserResponse: (SuspendUser?, Throwable?) -> Unit,
 ) {
     thread {
         try {
             Thread.sleep(1000)
 
-            val user = User(userId, "Filip")
+            val user = SuspendUser(userId, "Filip")
             onUserResponse(user, null)
         } catch (error: Throwable) {
             onUserResponse(null, error)
@@ -63,12 +62,12 @@ fun getUserFromNetworkCallback(
     println("end")
 }
 
-suspend fun getUserSuspended(userId: String): User = withContext(Dispatchers.Default) {
+private suspend fun getUserSuspended(userId: String): SuspendUser = withContext(Dispatchers.Default) {
     delay(1000)
-    User(userId, "Filip")
+    SuspendUser(userId, "Filip")
 }
 
-data class User(
+internal data class SuspendUser(
     val id: String,
     val name: String,
 )
