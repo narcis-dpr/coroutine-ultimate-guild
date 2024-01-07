@@ -2,6 +2,7 @@ package com.coroutines.basics
 
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.File
@@ -25,7 +26,7 @@ fun main() {
      }
      Thread.sleep(5000)
      */
-    GlobalScope.launch {
+    val launch = GlobalScope.launch {
         println("Finding user")
         val userDeferred = getUserByIdFromNetwork(userId) // deferred number one
         val usersFromFileDeferred = readUsersFromFile("basics/users.txt") // deferred number two
@@ -39,7 +40,8 @@ fun main() {
             println("Found user in file")
         }
     }
-    Thread.sleep(5000)
+    Thread.sleep(50)
+    launch.cancel()
 }
 
 private fun getUserByIdFromNetworkThread(userId: Int, onUserReady: (AsyncUser) -> Unit) {
