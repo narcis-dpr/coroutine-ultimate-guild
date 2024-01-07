@@ -22,4 +22,15 @@ fun main() {
     }
 
     Thread.sleep(50)
+    // context provider
+
+    val parentJob = Job()
+    val provider: CoroutineContextProvider =
+        CoroutineContextProviderImpl(context = parentJob + Dispatchers.IO)
+
+    GlobalScope.launch(context = provider.context()) {
+        println(Thread.currentThread().name)
+    }
+
+    Thread.sleep(50)
 }
