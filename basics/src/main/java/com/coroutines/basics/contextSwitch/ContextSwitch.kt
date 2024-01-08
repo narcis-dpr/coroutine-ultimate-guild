@@ -20,4 +20,9 @@ fun main() {
         println(Thread.currentThread().name)
     }
     Thread.sleep(50)
+
+    GlobalScope.launch(context = Dispatchers.Unconfined) {
+        println(Thread.currentThread().name)
+    }
+    Thread.sleep(50)
 }
