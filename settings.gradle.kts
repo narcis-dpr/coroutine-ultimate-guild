@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Coroutine Ultimate Guide"
 include(":app")
 include(":basics")
+include(":advanced")
