@@ -29,4 +29,5 @@ fun main() {
 }
 /**
  * using sharedIn we transform a flow into a shredFlow
+ * started = SharingStarted.Lazily : waits for the first subscriber
  */
