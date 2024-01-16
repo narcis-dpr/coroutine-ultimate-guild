@@ -1,21 +1,29 @@
 package com.coroutines.advanced.coroutineTest.view
 
+import com.coroutines.advanced.coroutineTest.contextProvider.CoroutineContextProvider
 import com.coroutines.advanced.coroutineTest.model.User
 import com.coroutines.advanced.coroutineTest.presentation.MainPresenter
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 class MainView(
     private val presenter: MainPresenter,
+    private val contextProvider: CoroutineContextProvider,
+    private val coroutineScope: CoroutineScope,
 ) {
 
     var userData: User? = null
 
-    @OptIn(DelicateCoroutinesApi::class)
+    /**
+     * Fetch user data:
+     * context and scope for coroutine shouldn't be hardcoded so that we can pass
+     * any scope that we want : actual scope for actual code and test scope for
+     * test code
+     *
+     */
+
     fun fetchUserData() {
-        GlobalScope.launch(Dispatchers.IO) {
+        coroutineScope.launch(contextProvider.context()) {
             userData = presenter.getUser("101")
         }
     }
