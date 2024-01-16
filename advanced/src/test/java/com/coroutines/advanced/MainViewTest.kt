@@ -1,5 +1,7 @@
 package com.coroutines.advanced
 
+import com.coroutines.advanced.coroutineTest.contextProvider.CoroutineContextProvider
+import com.coroutines.advanced.coroutineTest.contextProvider.CoroutineContextProviderImpl
 import com.coroutines.advanced.coroutineTest.presentation.MainPresenter
 import com.coroutines.advanced.coroutineTest.view.MainView
 import junit.framework.TestCase.assertEquals
@@ -12,15 +14,16 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
 class MainViewTest {
-    private val mainPresenter by lazy { MainPresenter() }
-    private val mainView by lazy { MainView(mainPresenter) }
 
     // test coroutineScope and coroutineContext
     private val testCoroutineDispatcher = StandardTestDispatcher() // helps coroutines run immediately
     private val testCoroutineScope = TestScope(testCoroutineDispatcher) // expose all functions to control the CoroutineDispatcher
+    private val testCoroutineContextProvider = CoroutineContextProviderImpl(testCoroutineDispatcher)
 
+    private val mainPresenter by lazy { MainPresenter() }
+    private val mainView by lazy { MainView(mainPresenter, testCoroutineContextProvider, testCoroutineScope) }
     @Test
-    fun testFetchUserData() = runTest {
+    fun testFetchUserData(): Unit = testCoroutineScope.runTest {
         // arrange: initial state
         assertNull(mainView.userData)
         // act: updating the state
