@@ -38,7 +38,7 @@ class DisneyActivity : AppCompatActivity() {
   }
 
   private fun startLoadingAnimation() {
-    val animation = AnimationUtils.loadAnimation(this, R.anim.rotation)
+    val animation = AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely)
     binding.loadingAnimation.startAnimation(animation)
   }
 

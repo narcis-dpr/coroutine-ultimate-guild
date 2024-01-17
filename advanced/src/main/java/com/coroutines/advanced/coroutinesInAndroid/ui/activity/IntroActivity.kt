@@ -12,7 +12,7 @@ class IntroActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // Set theme explicitly because we used another theme for the splash screen
-    setTheme(R.style.Theme_DisneyExplorer)
+    setTheme(R.style.AppTheme)
     binding = ActivityIntroBinding.inflate(layoutInflater)
     setContentView(binding.root)
     setClickListeners()
