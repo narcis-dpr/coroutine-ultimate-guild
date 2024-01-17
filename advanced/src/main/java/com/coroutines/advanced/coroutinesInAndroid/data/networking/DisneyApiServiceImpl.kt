@@ -2,7 +2,7 @@ package com.raywenderlich.android.disneyexplorer.data.networking
 
 import com.raywenderlich.android.disneyexplorer.data.model.CharactersResponse
 import com.raywenderlich.android.disneyexplorer.data.model.DisneyCharacter
-import com.raywenderlich.android.disneyexplorer.di.DependencyHolder
+import com.coroutines.advanced.coroutinesInAndroid.di.DependencyHolder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

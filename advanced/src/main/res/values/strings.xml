@@ -13,4 +13,6 @@
   <string name="flow_producing_numbers">Flow producing numbers…</string>
   <string name="get_disney_characters">Get Disney characters</string>
   <string name="jetpack_compose">Jetpack Compose</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_ui_layer">UiLayerActivity</string>
 </resources>

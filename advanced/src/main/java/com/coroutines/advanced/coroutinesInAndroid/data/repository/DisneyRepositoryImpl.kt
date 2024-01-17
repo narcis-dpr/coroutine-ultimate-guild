@@ -1,6 +1,6 @@
 package com.raywenderlich.android.disneyexplorer.data.repository
 
-import com.raywenderlich.android.disneyexplorer.common.utils.CoroutineContextProvider
+import com.coroutines.advanced.coroutineInUiLayer.common.utiles.CoroutineContextProvider
 import com.raywenderlich.android.disneyexplorer.data.database.CharacterDao
 import com.raywenderlich.android.disneyexplorer.data.model.DisneyCharacter
 import com.raywenderlich.android.disneyexplorer.data.networking.DisneyApiService

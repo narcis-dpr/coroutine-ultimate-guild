@@ -11,9 +11,18 @@
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".coroutineInUiLayer.UiLayerActivity"
+            android:exported="false"
+            android:label="@string/title_activity_ui_layer"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".coroutineInUiLayer.MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
             android:name=".coroutinesInAndroid.ui.activity.DisneyActivity"
             android:exported="false" />
-
         <activity
             android:name=".coroutinesInAndroid.ui.activity.IntroActivity"
             android:exported="true"
@@ -32,4 +41,5 @@
             android:name=".coroutinesInAndroid.ui.activity.BackgroundProcessingActivity"
             android:exported="false" />
     </application>
+
 </manifest>

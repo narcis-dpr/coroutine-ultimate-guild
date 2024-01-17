@@ -16,9 +16,9 @@ import com.coroutines.advanced.R
 import com.coroutines.advanced.coroutinesInAndroid.ui.activity.ProcessingMethod.*
 import com.coroutines.advanced.coroutinesInAndroid.ui.adapter.list.DisneyAdapter
 import com.coroutines.advanced.databinding.ActivityBackgroundProcessingBinding
-import com.raywenderlich.android.disneyexplorer.common.utils.showToast
+import com.coroutines.advanced.coroutineInUiLayer.common.utiles.showToast
 import com.raywenderlich.android.disneyexplorer.data.model.DisneyCharacter
-import com.raywenderlich.android.disneyexplorer.di.DependencyHolder
+import com.coroutines.advanced.coroutinesInAndroid.di.DependencyHolder
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.Disposable
@@ -89,7 +89,7 @@ class BackgroundProcessingActivity : ComponentActivity() {
 
     private fun runUiBlockingProcessing() {
         // This will block the thread while executing
-        showToast("Result: ${fibonacci(40)}")
+//        com.coroutines.advanced.coroutineInUiLayer.common.utiles.showToast("Result: ${fibonacci(40)}")
     }
 
     private fun runProcessingWithThread() {
