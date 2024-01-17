@@ -80,4 +80,6 @@ dependencies {
 
     // LiveData
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.5.0-alpha02")
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines- android:1.6.0")
 }
