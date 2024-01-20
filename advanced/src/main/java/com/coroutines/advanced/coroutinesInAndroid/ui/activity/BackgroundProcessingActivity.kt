@@ -16,8 +16,7 @@ import com.coroutines.advanced.R
 import com.coroutines.advanced.coroutinesInAndroid.ui.activity.ProcessingMethod.*
 import com.coroutines.advanced.coroutinesInAndroid.ui.adapter.list.DisneyAdapter
 import com.coroutines.advanced.databinding.ActivityBackgroundProcessingBinding
-import com.coroutines.advanced.coroutineInUiLayer.common.utiles.showToast
-import com.raywenderlich.android.disneyexplorer.data.model.DisneyCharacter
+import com.coroutines.advanced.coroutinesInAndroid.data.model.DisneyCharacter
 import com.coroutines.advanced.coroutinesInAndroid.di.DependencyHolder
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single

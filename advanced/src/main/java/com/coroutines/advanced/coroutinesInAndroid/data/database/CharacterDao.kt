@@ -1,9 +1,9 @@
-package com.raywenderlich.android.disneyexplorer.data.database
+package com.coroutines.advanced.coroutinesInAndroid.data.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.raywenderlich.android.disneyexplorer.data.model.DisneyCharacter
+import com.coroutines.advanced.coroutinesInAndroid.data.model.DisneyCharacter
 
 @Dao
 interface CharacterDao {

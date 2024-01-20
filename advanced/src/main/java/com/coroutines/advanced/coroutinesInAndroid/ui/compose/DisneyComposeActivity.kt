@@ -8,11 +8,10 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import com.coroutines.advanced.coroutinesInAndroid.ui.viewmodel.DisneyViewModel
-import com.raywenderlich.android.disneyexplorer.data.model.DisneyCharacter
+import com.coroutines.advanced.coroutinesInAndroid.data.model.DisneyCharacter
 
 class DisneyComposeActivity : ComponentActivity() {
 //  private val viewModel: DisneyViewModel by viewModels()

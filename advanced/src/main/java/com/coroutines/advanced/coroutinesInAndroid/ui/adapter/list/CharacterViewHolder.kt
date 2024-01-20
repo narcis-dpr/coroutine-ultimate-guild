@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.coroutines.advanced.databinding.ListItemCharacterBinding
-import com.raywenderlich.android.disneyexplorer.data.model.DisneyCharacter
+import com.coroutines.advanced.coroutinesInAndroid.data.model.DisneyCharacter
 
 class CharacterViewHolder(private val binding: ListItemCharacterBinding) :
     RecyclerView.ViewHolder(binding.root) {

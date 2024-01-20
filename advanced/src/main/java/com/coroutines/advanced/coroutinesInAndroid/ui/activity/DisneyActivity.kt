@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.coroutines.advanced.R
 import com.coroutines.advanced.databinding.ActivityNetworkingBinding
-import com.raywenderlich.android.disneyexplorer.data.model.DisneyCharacter
+import com.coroutines.advanced.coroutinesInAndroid.data.model.DisneyCharacter
 import com.coroutines.advanced.coroutinesInAndroid.di.DependencyHolder
 import com.coroutines.advanced.coroutinesInAndroid.ui.adapter.list.DisneyAdapter
 import kotlinx.coroutines.Dispatchers

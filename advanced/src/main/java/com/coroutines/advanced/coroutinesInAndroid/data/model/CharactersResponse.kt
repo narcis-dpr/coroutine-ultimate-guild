@@ -1,4 +1,4 @@
-package com.raywenderlich.android.disneyexplorer.data.model
+package com.coroutines.advanced.coroutinesInAndroid.data.model
 
 import kotlinx.serialization.Serializable
 

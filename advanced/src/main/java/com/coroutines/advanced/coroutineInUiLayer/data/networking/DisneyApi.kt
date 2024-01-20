@@ -1,7 +1,7 @@
 
 package com.coroutines.advanced.coroutineInUiLayer.data.networking
 
-import com.raywenderlich.android.disneyexplorer.data.model.CharactersResponse
+import com.coroutines.advanced.coroutinesInAndroid.data.model.CharactersResponse
 import retrofit2.http.GET
 
 interface DisneyApi {

@@ -6,9 +6,9 @@ import com.coroutines.advanced.coroutineInUiLayer.data.networking.DisneyApi
 import com.coroutines.advanced.coroutinesInAndroid.App
 import com.coroutines.advanced.coroutinesInAndroid.data.repository.DisneyRepositoryImpl
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.raywenderlich.android.disneyexplorer.data.database.CharacterDao
-import com.raywenderlich.android.disneyexplorer.data.database.DisneyDatabase
-import com.raywenderlich.android.disneyexplorer.data.repository.DisneyRepository
+import com.coroutines.advanced.coroutinesInAndroid.data.database.CharacterDao
+import com.coroutines.advanced.coroutinesInAndroid.data.database.DisneyDatabase
+import com.coroutines.advanced.coroutinesInAndroid.data.repository.DisneyRepository
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType

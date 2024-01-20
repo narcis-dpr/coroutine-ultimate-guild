@@ -1,8 +1,8 @@
 package com.coroutines.advanced.coroutinesInAndroid.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.raywenderlich.android.disneyexplorer.data.model.DisneyCharacter
-import com.raywenderlich.android.disneyexplorer.data.repository.DisneyRepository
+import com.coroutines.advanced.coroutinesInAndroid.data.model.DisneyCharacter
+import com.coroutines.advanced.coroutinesInAndroid.data.repository.DisneyRepository
 import com.coroutines.advanced.coroutinesInAndroid.di.DependencyHolder
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
