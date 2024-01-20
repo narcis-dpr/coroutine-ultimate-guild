@@ -1,5 +1,7 @@
 package com.raywenderlich.android.disneyexplorer.data.networking
 
+import com.coroutines.advanced.coroutineInUiLayer.data.networking.DisneyApi
+import com.coroutines.advanced.coroutineInUiLayer.data.networking.DisneyApiService
 import com.raywenderlich.android.disneyexplorer.data.model.CharactersResponse
 import com.raywenderlich.android.disneyexplorer.data.model.DisneyCharacter
 import com.coroutines.advanced.coroutinesInAndroid.di.DependencyHolder

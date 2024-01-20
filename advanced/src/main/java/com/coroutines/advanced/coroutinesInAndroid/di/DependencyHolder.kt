@@ -6,8 +6,8 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.coroutines.advanced.coroutineInUiLayer.common.utiles.CoroutineContextProvider
 import com.raywenderlich.android.disneyexplorer.data.database.CharacterDao
 import com.raywenderlich.android.disneyexplorer.data.database.DisneyDatabase
-import com.raywenderlich.android.disneyexplorer.data.networking.DisneyApi
-import com.raywenderlich.android.disneyexplorer.data.networking.DisneyApiService
+import com.coroutines.advanced.coroutineInUiLayer.data.networking.DisneyApi
+import com.coroutines.advanced.coroutineInUiLayer.data.networking.DisneyApiService
 import com.raywenderlich.android.disneyexplorer.data.networking.DisneyApiServiceImpl
 import com.raywenderlich.android.disneyexplorer.data.repository.DisneyRepository
 import com.raywenderlich.android.disneyexplorer.data.repository.DisneyRepositoryImpl
