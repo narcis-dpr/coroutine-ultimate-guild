@@ -6,5 +6,5 @@ import com.coroutines.advanced.coroutinesInAndroid.data.model.DisneyCharacter
 
 @Database(entities = [DisneyCharacter::class], version = 1, exportSchema = false)
 abstract class DisneyDatabase : RoomDatabase() {
-  abstract fun characterDao(): CharacterDao
+//  abstract fun characterDao(): CharacterDao
 }

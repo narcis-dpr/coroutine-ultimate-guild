@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 class DisneyViewModel : ViewModel() {
-    private val disneyRepo: DisneyRepository by lazy { DependencyHolder.disneyRepository }
+//    private val disneyRepo: DisneyRepository by lazy { DependencyHolder.disneyRepository }
     private val _uiState = MutableStateFlow(emptyList<DisneyCharacter>())
     val uiState: StateFlow<List<DisneyCharacter>>
         get() = _uiState
