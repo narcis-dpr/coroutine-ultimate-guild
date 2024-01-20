@@ -11,10 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.coroutines.advanced.coroutineInUiLayer.ui.theme.CoroutineUltimateGuideTheme
 import com.raywenderlich.android.disneyexplorer.common.utils.FlowUtils
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class UiLayerActivity : AppCompatActivity() {
@@ -33,13 +35,21 @@ class UiLayerActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun runProcessingWithFlow() {
+    private fun runProcessingWithFlow() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 FlowUtils.testDataFlow().collect {
                     println("Flow: value is: $it")
                 }
             }
+        }
+    }
+    private fun runProcessingWithAFlow() {
+        lifecycleScope.launch {
+            FlowUtils.testDataFlow().flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    println("Flow: value is $it")
+                }
         }
     }
 }
