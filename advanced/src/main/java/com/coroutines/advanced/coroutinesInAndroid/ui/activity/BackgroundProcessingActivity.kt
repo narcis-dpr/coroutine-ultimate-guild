@@ -40,7 +40,6 @@ class BackgroundProcessingActivity : ComponentActivity() {
     private var handlerThread: HandlerThread? = null
     private val getCharactersRunnable by lazy { GetCharactersRunnable() }
     private val adapter by lazy { DisneyAdapter() }
-    private val disneyApiService by lazy { DependencyHolder.apiService }
     private var disposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,7 +100,7 @@ class BackgroundProcessingActivity : ComponentActivity() {
         val handler = Handler(Looper.getMainLooper())
         // Create a new thread and give it some work to do
         Thread {
-            val characters = disneyApiService.getDisneyCharacters()
+            val characters =   emptyList<DisneyCharacter>()// disneyApiService.getDisneyCharacters()
             // Use the handler to show results on the main thread
             handler.post {
                 showResults(characters)
@@ -121,7 +120,7 @@ class BackgroundProcessingActivity : ComponentActivity() {
             val mainHandler = Handler(Looper.getMainLooper())
             // This will run on the HandlerThread created above
             handler.post {
-                val characters = disneyApiService.getDisneyCharacters()
+                val characters =  emptyList<DisneyCharacter>() //disneyApiService.getDisneyCharacters()
                 // Use the handler associated with the main thread to show the results
                 mainHandler.post {
                     showResults(characters)
@@ -140,7 +139,7 @@ class BackgroundProcessingActivity : ComponentActivity() {
         // 1
         disposable = Single.create<List<DisneyCharacter>> { emitter ->
             // 2
-            val characters = disneyApiService.getDisneyCharacters()
+            val characters = emptyList<DisneyCharacter>()// disneyApiService.getDisneyCharacters()
             emitter.onSuccess(characters)
             // 3
         }.subscribeOn(Schedulers.io())
@@ -152,7 +151,7 @@ class BackgroundProcessingActivity : ComponentActivity() {
 
     private fun runProcessingWithCoroutines() {
         lifecycleScope.launch(Dispatchers.IO) {
-            val characters = disneyApiService.getDisneyCharacters()
+            val characters = emptyList<DisneyCharacter>() //disneyApiService.getDisneyCharacters()
             withContext(Dispatchers.Main) {
                 showResults(characters)
             }
@@ -175,7 +174,7 @@ class BackgroundProcessingActivity : ComponentActivity() {
 
     inner class GetCharactersRunnable : Runnable {
         override fun run() {
-            val characters = disneyApiService.getDisneyCharacters()
+            val characters = emptyList<DisneyCharacter>() //disneyApiService.getDisneyCharacters()
             runOnUiThread { showResults(characters) }
         }
     }
