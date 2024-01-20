@@ -9,6 +9,8 @@ follow the commits in every module to understand the proccess of development and
 creating suspending functions, async/await functions, exception handling, context switching,
 
 ## advanced modoule:
-creating shared flow and state flow, creating sequences, manage cancellation, testing coroutines TDD style,
+creating shared flow and state flow, creating sequences, manage cancellation, testing coroutines TDD style.
+
+### android packge: very basic stuff, in android you need to do alot more that that! :)
 
 
