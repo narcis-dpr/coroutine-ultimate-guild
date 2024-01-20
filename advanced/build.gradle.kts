@@ -92,6 +92,10 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxjava:3.1.3")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
 
+    // lifcycle
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
+
     // Room
     implementation("androidx.room:room-runtime:2.4.1")
     implementation("androidx.room:room-ktx:2.4.1")

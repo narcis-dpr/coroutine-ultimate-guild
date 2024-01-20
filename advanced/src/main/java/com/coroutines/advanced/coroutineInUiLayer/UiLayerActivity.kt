@@ -1,8 +1,8 @@
 package com.coroutines.advanced.coroutineInUiLayer
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -10,9 +10,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.coroutines.advanced.coroutineInUiLayer.ui.theme.CoroutineUltimateGuideTheme
+import com.raywenderlich.android.disneyexplorer.common.utils.FlowUtils
+import kotlinx.coroutines.launch
 
-class UiLayerActivity : ComponentActivity() {
+class UiLayerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -23,6 +28,16 @@ class UiLayerActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background,
                 ) {
                     Greeting2("Android")
+                }
+            }
+        }
+    }
+
+    private suspend fun runProcessingWithFlow() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                FlowUtils.testDataFlow().collect {
+                    println("Flow: value is: $it")
                 }
             }
         }
