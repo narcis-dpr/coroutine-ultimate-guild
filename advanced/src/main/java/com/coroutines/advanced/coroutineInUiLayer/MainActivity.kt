@@ -10,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.lifecycleScope
 import com.coroutines.advanced.coroutineInUiLayer.ui.theme.CoroutineUltimateGuideTheme
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +27,14 @@ class MainActivity : ComponentActivity() {
                     Greeting("Android")
                 }
             }
+        }
+    }
+    private fun fetchDisneyCharacters() {
+        lifecycleScope.launch {
+//           apiService.getCharacters()
+//               .onSuccess { showResults(it.data) }
+//               .onFailure { showError(it) }
+//       }
         }
     }
 }

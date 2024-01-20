@@ -3,37 +3,24 @@ package com.coroutines.advanced.coroutineInUiLayer.data.networking
 
 import com.raywenderlich.android.disneyexplorer.data.model.CharactersResponse
 import com.raywenderlich.android.disneyexplorer.data.model.DisneyCharacter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class DisneyApiService(private val disneyApi: DisneyApi) {
 
-    fun getCharacters(
-        onError: (Throwable) -> Unit,
-        onSuccess: (List<DisneyCharacter>) -> Unit,
-    ) {
-        // Make an asynchronous request
-        disneyApi.getCharacters().enqueue(object : Callback<CharactersResponse> {
-            override fun onResponse(
-                call: Call<CharactersResponse>,
-                response: Response<CharactersResponse>,
-            ) {
-                // Invoke onSuccess lambda when the results are ready
-                val data = response.body()
+    suspend fun getCharacters(): Result<CharactersResponse> =
+        withContext(Dispatchers.IO) {
+            try {
+                val data = disneyApi.getCharacters().execute().body()
                 if (data == null) {
-                    onError(Throwable("No response"))
+                    Result.failure(Throwable("No response"))
                 } else {
-                    onSuccess(data.data)
+                    Result.success(data)
                 }
+            } catch (error: Throwable) {
+                Result.failure(error)
             }
-
-            override fun onFailure(call: Call<CharactersResponse>, t: Throwable) {
-                // Invoke onError if an error happens
-                onError(t)
-            }
-        })
-    }
+        }
 
     fun getDisneyCharacters(): List<DisneyCharacter> {
         // Initiate the request
